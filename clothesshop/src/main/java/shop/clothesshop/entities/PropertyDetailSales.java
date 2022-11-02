@@ -17,8 +17,12 @@ public class PropertyDetailSales {
 
     @Column(name = "propertydetailid", insertable = false, updatable = false)
     private Integer propertyDetailId;
-
-
+    @Column(name = "propertydetailsalesstatusid", insertable = false, updatable = false)
+    private Integer propertyDetailSalesStatusId;
+    @ManyToOne
+    @JoinColumn(name = "propertydetailsalesstatusid")
+    @JsonBackReference
+    private PropertyDetailSalesStatus propertyDetailSalesStatus;
     @ManyToOne
     @JoinColumn(name = "saleid")
     @JsonBackReference
@@ -31,6 +35,22 @@ public class PropertyDetailSales {
 
     public Integer getPropertyDetailSalesId() {
         return propertyDetailSalesId;
+    }
+
+    public Integer getPropertyDetailSalesStatusId() {
+        return propertyDetailSalesStatusId;
+    }
+
+    public void setPropertyDetailSalesStatusId(Integer propertyDetailSalesStatusId) {
+        this.propertyDetailSalesStatusId = propertyDetailSalesStatusId;
+    }
+
+    public PropertyDetailSalesStatus getPropertyDetailSalesStatus() {
+        return propertyDetailSalesStatus;
+    }
+
+    public void setPropertyDetailSalesStatus(PropertyDetailSalesStatus propertyDetailSalesStatus) {
+        this.propertyDetailSalesStatus = propertyDetailSalesStatus;
     }
 
     public void setPropertyDetailSalesId(Integer propertyDetailSalesId) {

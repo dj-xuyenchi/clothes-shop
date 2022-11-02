@@ -13,10 +13,12 @@ public class Product {
     @Column(name = "productid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
-
-    @Column(name = "shopid", insertable = false, updatable = false)
-    private Integer shopId;
-
+    @Column(name = "categorytypeid", insertable = false, updatable = false)
+    private Integer categoryTypeId;
+    @ManyToOne
+    @JoinColumn(name = "categorytypeid")
+    @JsonBackReference
+    private CategoryType categoryType;
     @Column(name = "productname")
     private String productName;
 
@@ -26,16 +28,9 @@ public class Product {
     @Column(name = "productdetail")
     private String productDetail;
 
-    @Column(name = "productimgproperty")
-    private Integer productImgProperty;
-
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Property> propertyList;
-    @ManyToOne
-    @JoinColumn(name = "shopid")
-    @JsonBackReference
-    private Shop shop;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     @JsonManagedReference
@@ -43,11 +38,24 @@ public class Product {
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<ProductTypeDetail> productTypeDetails;
-
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    @JsonManagedReference
     private List<ProductImg> productImgs;
+
+
+    public Integer getCategoryTypeId() {
+        return categoryTypeId;
+    }
+
+    public void setCategoryTypeId(Integer categoryTypeId) {
+        this.categoryTypeId = categoryTypeId;
+    }
+
+    public CategoryType getCategoryType() {
+        return categoryType;
+    }
+
+    public void setCategoryType(CategoryType categoryType) {
+        this.categoryType = categoryType;
+    }
 
     public Integer getProductId() {
         return productId;
@@ -57,13 +65,6 @@ public class Product {
         this.productId = productId;
     }
 
-    public Integer getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
-    }
 
     public String getProductName() {
         return productName;
@@ -89,13 +90,6 @@ public class Product {
         this.productDetail = productDetail;
     }
 
-    public Integer getProductImgProperty() {
-        return productImgProperty;
-    }
-
-    public void setProductImgProperty(Integer productImgProperty) {
-        this.productImgProperty = productImgProperty;
-    }
 
     public List<Property> getPropertyList() {
         return propertyList;
@@ -105,13 +99,6 @@ public class Product {
         this.propertyList = propertyList;
     }
 
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
 
     public List<VoteStar> getVoteStars() {
         return voteStars;
@@ -119,14 +106,6 @@ public class Product {
 
     public void setVoteStars(List<VoteStar> voteStars) {
         this.voteStars = voteStars;
-    }
-
-    public List<ProductTypeDetail> getProductTypeDetails() {
-        return productTypeDetails;
-    }
-
-    public void setProductTypeDetails(List<ProductTypeDetail> productTypeDetails) {
-        this.productTypeDetails = productTypeDetails;
     }
 
     public List<ProductImg> getProductImgs() {

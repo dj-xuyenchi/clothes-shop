@@ -18,10 +18,10 @@ public class Bill {
     @Column(name = "accountshipcontactid", updatable = false, insertable = false)
     private Integer accountShipContactId;
 
-    @Column(name = "buymethodid",updatable = false,insertable = false)
+    @Column(name = "buymethodid", updatable = false, insertable = false)
     private Integer buyMethodId;
 
-    @Column(name = "shipmethodid",updatable = false,insertable = false)
+    @Column(name = "shipmethodid", updatable = false, insertable = false)
     private Integer shipMethodId;
 
     @Column(name = "createdate")
@@ -29,17 +29,22 @@ public class Bill {
     @Column(name = "shiptobuyerdate")
     private LocalDate shipToBuyerDate;
 
-    @Column(name = "billstatus")
-    private Integer billStatus;
 
     @Column(name = "receiveddate")
     private LocalDate receivedDate;
 
-    @Column(name = "canceldatetime")
-    private LocalDate cancelDateTime;
+    @Column(name = "closedatetime")
+    private LocalDate closeDateTime;
 
     @Column(name = "buyernotification")
     private String buyerNotification;
+    @Column(name = "cancelreasonid", updatable = false, insertable = false)
+    private Integer cancelReasonId;
+    @JoinColumn(name = "cancelreasonid")
+    @ManyToOne
+    @JsonBackReference
+    private CancelReason cancelReason;
+
 
     @ManyToOne
     @JoinColumn(name = "buymethodid")
@@ -60,10 +65,6 @@ public class Bill {
     @JsonManagedReference
     private List<BillDetail> billDetails;
 
-    @ManyToOne
-    @JoinColumn(name="cancelstatus")
-    @JsonBackReference
-    private CancelReason cancelReason;
 
     public Integer getBillId() {
         return billId;
@@ -112,15 +113,6 @@ public class Bill {
     public void setShipToBuyerDate(LocalDate shipToBuyerDate) {
         this.shipToBuyerDate = shipToBuyerDate;
     }
-
-    public Integer getBillStatus() {
-        return billStatus;
-    }
-
-    public void setBillStatus(Integer billStatus) {
-        this.billStatus = billStatus;
-    }
-
     public LocalDate getReceivedDate() {
         return receivedDate;
     }
@@ -128,15 +120,6 @@ public class Bill {
     public void setReceivedDate(LocalDate receivedDate) {
         this.receivedDate = receivedDate;
     }
-
-    public LocalDate getCancelDateTime() {
-        return cancelDateTime;
-    }
-
-    public void setCancelDateTime(LocalDate cancelDateTime) {
-        this.cancelDateTime = cancelDateTime;
-    }
-
     public String getBuyerNotification() {
         return buyerNotification;
     }

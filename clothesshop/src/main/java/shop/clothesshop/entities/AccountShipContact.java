@@ -19,16 +19,6 @@ public class AccountShipContact {
 
     @Column(name = "receivername")
     private String receiverName;
-
-    @Column(name = "province")
-    private String province;
-
-    @Column(name = "district")
-    private String district;
-
-    @Column(name = "communeorward")
-    private String communeorWard;
-
     @Column(name = "accountdetailaddress")
     private String accountDetailAddress;
 
@@ -67,30 +57,6 @@ public class AccountShipContact {
 
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getCommuneorWard() {
-        return communeorWard;
-    }
-
-    public void setCommuneorWard(String communeorWard) {
-        this.communeorWard = communeorWard;
     }
 
     public String getAccountDetailAddress() {

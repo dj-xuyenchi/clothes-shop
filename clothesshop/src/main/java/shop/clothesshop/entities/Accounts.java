@@ -30,8 +30,6 @@ public class Accounts {
     @Column(name = "accountstatusid", insertable = false, updatable = false)
     private Integer accountStatusId;
 
-    @Column(name = "accountsexid", insertable = false, updatable = false)
-    private Integer accountSexId;
 
     @Column(name = "accountname")
     private String accountName;
@@ -39,8 +37,6 @@ public class Accounts {
     @Column(name = "accountborn")
     private LocalDate accountBorn;
 
-    @Column(name = "accountaddress")
-    private String accountAddress;
 
     @Column(name = "accountdetailaddress")
     private String accountDetailAddress;
@@ -51,30 +47,23 @@ public class Accounts {
     @Column(name = "accountcreatedate")
     private LocalDate accountCreateDate;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<Shop> shopList;
 
     @ManyToOne
     @JoinColumn(name = "accountstatusid")
     @JsonBackReference
     private AccountStatus accountStatus;
 
-    @OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<AccountShipContact> accountShipContacts;
 
-    @OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<AccountBag> accountBags;
 
     @OneToMany(mappedBy = "account")
     @JsonManagedReference
     private List<VoteStar> voteStars;
-    @ManyToOne
-    @JoinColumn(name = "accountsexid")
-    @JsonBackReference
-    private Sex sex;
 
     public Integer getAccountId() {
         return accountId;
@@ -124,13 +113,6 @@ public class Accounts {
         this.accountStatusId = accountStatusId;
     }
 
-    public Integer getAccountSexId() {
-        return accountSexId;
-    }
-
-    public void setAccountSexId(Integer accountSexId) {
-        this.accountSexId = accountSexId;
-    }
 
     public String getAccountName() {
         return accountName;
@@ -148,13 +130,6 @@ public class Accounts {
         this.accountBorn = accountBorn;
     }
 
-    public String getAccountAddress() {
-        return accountAddress;
-    }
-
-    public void setAccountAddress(String accountAddress) {
-        this.accountAddress = accountAddress;
-    }
 
     public String getAccountDetailAddress() {
         return accountDetailAddress;
@@ -180,13 +155,6 @@ public class Accounts {
         this.accountCreateDate = accountCreateDate;
     }
 
-    public List<Shop> getShopList() {
-        return shopList;
-    }
-
-    public void setShopList(List<Shop> shopList) {
-        this.shopList = shopList;
-    }
 
     public AccountStatus getAccountStatus() {
         return accountStatus;
@@ -218,13 +186,5 @@ public class Accounts {
 
     public void setVoteStars(List<VoteStar> voteStars) {
         this.voteStars = voteStars;
-    }
-
-    public Sex getSex() {
-        return sex;
-    }
-
-    public void setSex(Sex sex) {
-        this.sex = sex;
     }
 }

@@ -5,21 +5,20 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name="shipmethod")
+@Table(name = "shipmethod")
 @Entity
 public class ShipMethod {
     @Id
-    @Column(name="shipmethodid")
+    @Column(name = "shipmethodid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer shipMethodId;
-
-    @Column(name="shipmethodcode")
+    @Column(name = "shipmethodcode")
     private String shipMethodCode;
-
-    @Column(name="shipmethodname")
+    @Column(name = "shipmethodname")
     private String shipMethodName;
-
-    @OneToMany(mappedBy = "shipMethod",fetch = FetchType.LAZY)
+    @Column(name = "price")
+    private Integer price;
+    @OneToMany(mappedBy = "shipMethod", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Bill> bills;
 

@@ -1,5 +1,9 @@
 package shop.clothesshop.serivices.iservices;
 
-public interface IProductServices {
+import shop.clothesshop.entities.Product;
 
+import java.util.List;
+
+public interface IProductServices {
+public List<Product> getAllProduct();
 }

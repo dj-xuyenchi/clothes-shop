@@ -26,8 +26,8 @@ public class PropertyDetail {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "price")
-    private Integer price;
+    @Column(name = "gianhap")
+    private Integer giaNhap;
 
     @Column(name = "shellprice")
     private Integer shellPrice;
@@ -89,12 +89,12 @@ public class PropertyDetail {
         this.quantity = quantity;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getGiaNhap() {
+        return giaNhap;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setGiaNhap(Integer giaNhap) {
+        this.giaNhap = giaNhap;
     }
 
     public Integer getShellPrice() {

@@ -25,9 +25,6 @@ public class Sales {
     @Column(name = "salesint")
     private Integer salesInt;
 
-    @OneToMany(mappedBy = "sale", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<BillDetail> billDetails;
 
     @OneToMany(mappedBy = "saleProperty", fetch = FetchType.LAZY)
     @JsonManagedReference
@@ -71,14 +68,6 @@ public class Sales {
 
     public void setSalesInt(Integer salesInt) {
         this.salesInt = salesInt;
-    }
-
-    public List<BillDetail> getBillDetails() {
-        return billDetails;
-    }
-
-    public void setBillDetails(List<BillDetail> billDetails) {
-        this.billDetails = billDetails;
     }
 
     public List<PropertyDetailSales> getPropertyDetailSalesList() {

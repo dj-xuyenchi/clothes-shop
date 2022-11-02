@@ -18,8 +18,6 @@ public class BillDetail {
     @Column(name = "propertydetailid", updatable = false, insertable = false)
     private Integer propertyDetailId;
 
-    @Column(name = "salesid", updatable = false, insertable = false)
-    private Integer saleId;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -37,10 +35,6 @@ public class BillDetail {
     @JsonBackReference
     private PropertyDetail propertyDetail;
 
-    @ManyToOne
-    @JoinColumn(name = "saleid")
-    @JsonBackReference
-    private Sales sale;
 
     public Integer getBillDetailId() {
         return billDetailId;
@@ -66,13 +60,6 @@ public class BillDetail {
         this.propertyDetailId = propertyDetailId;
     }
 
-    public Integer getSaleId() {
-        return saleId;
-    }
-
-    public void setSaleId(Integer saleId) {
-        this.saleId = saleId;
-    }
 
     public Integer getQuantity() {
         return quantity;
@@ -106,11 +93,4 @@ public class BillDetail {
         this.propertyDetail = propertyDetail;
     }
 
-    public Sales getSale() {
-        return sale;
-    }
-
-    public void setSale(Sales sale) {
-        this.sale = sale;
-    }
 }
