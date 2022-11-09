@@ -19,7 +19,7 @@ public class ProductImg {
     private Integer countImg;
 
     @Column(name = "productimg", columnDefinition = "longblob")
-    private Byte[] productImg;
+    private byte[] productImg;
 
     @ManyToOne
     @JoinColumn(name = "productid")
@@ -50,11 +50,11 @@ public class ProductImg {
         this.countImg = countImg;
     }
 
-    public Byte[] getProductImg() {
+    public byte[] getProductImg() {
         return productImg;
     }
 
-    public void setProductImg(Byte[] productImg) {
+    public void setProductImg(byte[] productImg) {
         this.productImg = productImg;
     }
 

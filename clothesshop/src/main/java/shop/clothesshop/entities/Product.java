@@ -1,9 +1,11 @@
 package shop.clothesshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Table(name = "product")
@@ -21,25 +23,83 @@ public class Product {
     private CategoryType categoryType;
     @Column(name = "productname")
     private String productName;
-
-    @Column(name = "producer")
-    private String producer;
-
     @Column(name = "productdetail")
     private String productDetail;
-
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    @JsonManagedReference
-    private List<Property> propertyList;
-
+    @Column(name = "sizeid", insertable = false, updatable = false)
+    private Integer sizeId;
+    @Column(name = "colorid", insertable = false, updatable = false)
+    private Integer colorId;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name="colorid")
+    private Color color;
+    @ManyToOne
+    @JoinColumn(name = "sizeid")
+    @JsonBackReference
+    private Size size;
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<VoteStar> voteStars;
-
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<ProductImg> productImgs;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @JsonManagedReference
+    private List<BillDetail> billDetails;
+    @Column(name = "producerid", insertable = false, updatable = false)
+    private Integer producerId;
+    @Column(name = "brandid", insertable = false, updatable = false)
+    private Integer brandId;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "brandid")
+    private Brand brand;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "producerid")
+    private Producer producer;
+    @Column(name = "quantity")
+    private Integer quantity;
+    @Column(name = "price")
+    private Integer price;
+    @Column(name = "shellprice")
+    private Integer shellPrice;
+    @Column(name="createdate")
+private LocalDate createDate;
+    @Column(name="updatedate")
+private LocalDate updateDate;
 
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
+
+    public LocalDate getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDate updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
 
     public Integer getCategoryTypeId() {
         return categoryTypeId;
@@ -57,29 +117,12 @@ public class Product {
         this.categoryType = categoryType;
     }
 
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-
     public String getProductName() {
         return productName;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public String getProducer() {
-        return producer;
-    }
-
-    public void setProducer(String producer) {
-        this.producer = producer;
     }
 
     public String getProductDetail() {
@@ -90,13 +133,28 @@ public class Product {
         this.productDetail = productDetail;
     }
 
-
-    public List<Property> getPropertyList() {
-        return propertyList;
+    public Integer getSizeId() {
+        return sizeId;
     }
 
-    public void setPropertyList(List<Property> propertyList) {
-        this.propertyList = propertyList;
+    public void setSizeId(Integer sizeId) {
+        this.sizeId = sizeId;
+    }
+
+    public Integer getColorId() {
+        return colorId;
+    }
+
+    public void setColorId(Integer colorId) {
+        this.colorId = colorId;
+    }
+
+    public Size getSize() {
+        return size;
+    }
+
+    public void setSize(Size size) {
+        this.size = size;
     }
 
 
@@ -114,5 +172,69 @@ public class Product {
 
     public void setProductImgs(List<ProductImg> productImgs) {
         this.productImgs = productImgs;
+    }
+
+    public List<BillDetail> getBillDetails() {
+        return billDetails;
+    }
+
+    public void setBillDetails(List<BillDetail> billDetails) {
+        this.billDetails = billDetails;
+    }
+
+    public Integer getProducerId() {
+        return producerId;
+    }
+
+    public void setProducerId(Integer producerId) {
+        this.producerId = producerId;
+    }
+
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public Producer getProducer() {
+        return producer;
+    }
+
+    public void setProducer(Producer producer) {
+        this.producer = producer;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Integer getShellPrice() {
+        return shellPrice;
+    }
+
+    public void setShellPrice(Integer shellPrice) {
+        this.shellPrice = shellPrice;
     }
 }

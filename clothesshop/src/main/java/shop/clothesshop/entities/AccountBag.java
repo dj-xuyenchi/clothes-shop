@@ -9,15 +9,15 @@ import javax.persistence.*;
 @Entity
 public class AccountBag {
     @Id
-    @Column(name="accountbag")
+    @Column(name="accountbagid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountBagId;
 
     @Column(name="accountid",insertable = false,updatable = false)
     private Integer accountId;
 
-    @Column(name="propertydetailid",insertable = false,updatable = false)
-    private Integer propertyDetailId;
+    @Column(name="productid",insertable = false,updatable = false)
+    private Integer productId;
 
     @Column(name="quantity")
     private Integer quantity;
@@ -28,9 +28,9 @@ public class AccountBag {
     private Accounts account;
 
     @ManyToOne
-    @JoinColumn(name = "propertydetailid")
+    @JoinColumn(name="productid")
     @JsonBackReference
-    private PropertyDetail propertyDetail;
+private Product product;
 
     public Integer getAccountBagId() {
         return accountBagId;
@@ -48,12 +48,12 @@ public class AccountBag {
         this.accountId = accountId;
     }
 
-    public Integer getPropertyDetailId() {
-        return propertyDetailId;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setPropertyDetailId(Integer propertyDetailId) {
-        this.propertyDetailId = propertyDetailId;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public Integer getQuantity() {
@@ -72,11 +72,11 @@ public class AccountBag {
         this.account = account;
     }
 
-    public PropertyDetail getPropertyDetail() {
-        return propertyDetail;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setPropertyDetail(PropertyDetail propertyDetail) {
-        this.propertyDetail = propertyDetail;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

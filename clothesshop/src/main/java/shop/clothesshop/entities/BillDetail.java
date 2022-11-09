@@ -1,8 +1,10 @@
 package shop.clothesshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "billdetail")
 @Entity
@@ -15,8 +17,8 @@ public class BillDetail {
     @Column(name = "billid", updatable = false, insertable = false)
     private Integer billId;
 
-    @Column(name = "propertydetailid", updatable = false, insertable = false)
-    private Integer propertyDetailId;
+    @Column(name = "productid", updatable = false, insertable = false)
+    private Integer productId;
 
 
     @Column(name = "quantity")
@@ -31,10 +33,22 @@ public class BillDetail {
     private Bill bill;
 
     @ManyToOne
-    @JoinColumn(name = "propertydetailid")
+    @JoinColumn(name = "productid")
     @JsonBackReference
-    private PropertyDetail propertyDetail;
+    private Product product;
 
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "billDetail")
+    @JsonManagedReference
+    private List<BillSales> billSaless;
+
+    public List<BillSales> getBillSaless() {
+        return billSaless;
+    }
+
+    public void setBillSaless(List<BillSales> billSaless) {
+        this.billSaless = billSaless;
+    }
 
     public Integer getBillDetailId() {
         return billDetailId;
@@ -52,14 +66,21 @@ public class BillDetail {
         this.billId = billId;
     }
 
-    public Integer getPropertyDetailId() {
-        return propertyDetailId;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setPropertyDetailId(Integer propertyDetailId) {
-        this.propertyDetailId = propertyDetailId;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public Integer getQuantity() {
         return quantity;
@@ -83,14 +104,6 @@ public class BillDetail {
 
     public void setBill(Bill bill) {
         this.bill = bill;
-    }
-
-    public PropertyDetail getPropertyDetail() {
-        return propertyDetail;
-    }
-
-    public void setPropertyDetail(PropertyDetail propertyDetail) {
-        this.propertyDetail = propertyDetail;
     }
 
 }

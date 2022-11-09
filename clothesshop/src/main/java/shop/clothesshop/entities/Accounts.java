@@ -14,39 +14,61 @@ public class Accounts {
     @Column(name = "accountid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
-
     @Column(name = "accountusername")
     private String accountUserName;
-
-    @Column(name = "accountemail")
-    private String accountEmail;
-
-    @Column(name = "accountnumberphone")
-    private String accountNumberPhone;
-
     @Column(name = "accountpassword")
     private String accountPassword;
-
     @Column(name = "accountstatusid", insertable = false, updatable = false)
     private Integer accountStatusId;
-
-
-    @Column(name = "accountname")
-    private String accountName;
-
     @Column(name = "accountborn")
     private LocalDate accountBorn;
-
-
     @Column(name = "accountdetailaddress")
     private String accountDetailAddress;
-
-    @Column(name = "accountphonenumber")
-    private String accountPhoneNumber;
-
     @Column(name = "accountcreatedate")
     private LocalDate accountCreateDate;
+    @Column(name = "roleid", insertable = false, updatable = false)
+    private Integer roleId;
+    @ManyToOne
+    @JoinColumn(name = "roleid")
+    @JsonBackReference
+    private Role role;
+    @Column(name = "createdate")
+    private LocalDate createDate;
+    @Column(name = "updatedate")
+    private LocalDate updateDate;
 
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
+
+    public LocalDate getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(LocalDate updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public Integer getRoleId() {
+
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     @ManyToOne
     @JoinColumn(name = "accountstatusid")
@@ -81,22 +103,6 @@ public class Accounts {
         this.accountUserName = accountUserName;
     }
 
-    public String getAccountEmail() {
-        return accountEmail;
-    }
-
-    public void setAccountEmail(String accountEmail) {
-        this.accountEmail = accountEmail;
-    }
-
-    public String getAccountNumberPhone() {
-        return accountNumberPhone;
-    }
-
-    public void setAccountNumberPhone(String accountNumberPhone) {
-        this.accountNumberPhone = accountNumberPhone;
-    }
-
     public String getAccountPassword() {
         return accountPassword;
     }
@@ -113,14 +119,6 @@ public class Accounts {
         this.accountStatusId = accountStatusId;
     }
 
-
-    public String getAccountName() {
-        return accountName;
-    }
-
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
-    }
 
     public LocalDate getAccountBorn() {
         return accountBorn;
@@ -139,13 +137,6 @@ public class Accounts {
         this.accountDetailAddress = accountDetailAddress;
     }
 
-    public String getAccountPhoneNumber() {
-        return accountPhoneNumber;
-    }
-
-    public void setAccountPhoneNumber(String accountPhoneNumber) {
-        this.accountPhoneNumber = accountPhoneNumber;
-    }
 
     public LocalDate getAccountCreateDate() {
         return accountCreateDate;
