@@ -18,7 +18,7 @@ public class SalesStatus {
     private String salesStatusDetail;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "salesStatus")
     @JsonManagedReference
-    private List<BillSales> billSalesses;
+    private List<Sales> saless;
 
     public Integer getSalesStatusId() {
         return salesStatusId;
@@ -44,12 +44,12 @@ public class SalesStatus {
         this.salesStatusDetail = salesStatusDetail;
     }
 
-    public List<BillSales> getProductSaless() {
-        return billSalesses;
+    public List<Sales> getSaless() {
+        return saless;
     }
 
-    public void setProductSaless(List<BillSales> billSalesses) {
-        this.billSalesses = billSalesses;
+    public void setSaless(List<Sales> saless) {
+        this.saless = saless;
     }
 }
 

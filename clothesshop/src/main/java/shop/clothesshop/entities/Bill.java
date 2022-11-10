@@ -14,57 +14,43 @@ public class Bill {
     @Column(name = "billid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer billId;
-
     @Column(name = "accountshipcontactid", updatable = false, insertable = false)
     private Integer accountShipContactId;
-
     @Column(name = "buymethodid", updatable = false, insertable = false)
     private Integer buyMethodId;
-
     @Column(name = "shipmethodid", updatable = false, insertable = false)
     private Integer shipMethodId;
-
     @Column(name = "createdate")
     private LocalDate createDate;
     @Column(name = "shiptobuyerdate")
     private LocalDate shipToBuyerDate;
-
-
     @Column(name = "receiveddate")
     private LocalDate receivedDate;
-
     @Column(name = "closedatetime")
     private LocalDate closeDateTime;
-
     @Column(name = "buyernotification")
     private String buyerNotification;
-    @Column(name = "cancelreasonid", updatable = false, insertable = false)
-    private Integer cancelReasonId;
-    @JoinColumn(name = "cancelreasonid")
+    @Column(name = "billstatusid", updatable = false, insertable = false)
+    private Integer billStatusId;
+    @JoinColumn(name = "billstatusid")
     @ManyToOne
     @JsonBackReference
-    private CancelReason cancelReason;
-
-
+    private BillStatus billStatus;
     @ManyToOne
     @JoinColumn(name = "buymethodid")
     @JsonBackReference
     private BuyMethod buyMethod;
-
     @ManyToOne
     @JoinColumn(name = "shipmethodid")
     @JsonBackReference
     private ShipMethod shipMethod;
-
     @ManyToOne
     @JoinColumn(name = "accountshipcontactid")
     @JsonBackReference
     private AccountShipContact accountShipContact;
-
     @OneToMany(mappedBy = "bill", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<BillDetail> billDetails;
-
 
     public Integer getBillId() {
         return billId;
@@ -113,6 +99,7 @@ public class Bill {
     public void setShipToBuyerDate(LocalDate shipToBuyerDate) {
         this.shipToBuyerDate = shipToBuyerDate;
     }
+
     public LocalDate getReceivedDate() {
         return receivedDate;
     }
@@ -120,12 +107,37 @@ public class Bill {
     public void setReceivedDate(LocalDate receivedDate) {
         this.receivedDate = receivedDate;
     }
+
+    public LocalDate getCloseDateTime() {
+        return closeDateTime;
+    }
+
+    public void setCloseDateTime(LocalDate closeDateTime) {
+        this.closeDateTime = closeDateTime;
+    }
+
     public String getBuyerNotification() {
         return buyerNotification;
     }
 
     public void setBuyerNotification(String buyerNotification) {
         this.buyerNotification = buyerNotification;
+    }
+
+    public Integer getBillStatusId() {
+        return billStatusId;
+    }
+
+    public void setBillStatusId(Integer billStatusId) {
+        this.billStatusId = billStatusId;
+    }
+
+    public BillStatus getBillStatus() {
+        return billStatus;
+    }
+
+    public void setBillStatus(BillStatus billStatus) {
+        this.billStatus = billStatus;
     }
 
     public BuyMethod getBuyMethod() {
@@ -158,13 +170,5 @@ public class Bill {
 
     public void setBillDetails(List<BillDetail> billDetails) {
         this.billDetails = billDetails;
-    }
-
-    public CancelReason getCancelReason() {
-        return cancelReason;
-    }
-
-    public void setCancelReason(CancelReason cancelReason) {
-        this.cancelReason = cancelReason;
     }
 }

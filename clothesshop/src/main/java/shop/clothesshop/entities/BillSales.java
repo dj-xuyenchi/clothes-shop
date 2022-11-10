@@ -4,25 +4,20 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
-@Table(name = "productsales")
+@Table(name = "billsales")
 @Entity
 public class BillSales {
     @Id
-    @Column(name = "productsalesid")
+    @Column(name = "billsalesid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer productSalesId;
+    private Integer billSalesId;
     @Column(name = "salesid", updatable = false, insertable = false)
     private Integer salesId;
     @Column(name = "billdetailid", insertable = false, updatable = false)
     private Integer billDetailId;
-    @Column(name = "salesstatusid", insertable = false, updatable = false)
-    private Integer salesSatusId;
+
     @ManyToOne
-    @JoinColumn(name = "salesstatusid")
-    @JsonBackReference
-    private SalesStatus salesStatus;
-    @ManyToOne
-    @JoinColumn(name = "saleid")
+    @JoinColumn(name = "salesid")
     @JsonBackReference
     private Sales saleProperty;
     @ManyToOne
@@ -30,12 +25,12 @@ public class BillSales {
     @JsonBackReference
     private BillDetail billDetail;
 
-    public Integer getProductSalesId() {
-        return productSalesId;
+    public Integer getBillSalesId() {
+        return billSalesId;
     }
 
-    public void setProductSalesId(Integer productSalesId) {
-        this.productSalesId = productSalesId;
+    public void setBillSalesId(Integer billSalesId) {
+        this.billSalesId = billSalesId;
     }
 
     public Integer getSalesId() {
@@ -46,21 +41,12 @@ public class BillSales {
         this.salesId = salesId;
     }
 
-
-    public Integer getSalesSatusId() {
-        return salesSatusId;
+    public Integer getBillDetailId() {
+        return billDetailId;
     }
 
-    public void setSalesSatusId(Integer salesSatusId) {
-        this.salesSatusId = salesSatusId;
-    }
-
-    public SalesStatus getSalesStatus() {
-        return salesStatus;
-    }
-
-    public void setSalesStatus(SalesStatus salesStatus) {
-        this.salesStatus = salesStatus;
+    public void setBillDetailId(Integer billDetailId) {
+        this.billDetailId = billDetailId;
     }
 
     public Sales getSaleProperty() {
@@ -69,14 +55,6 @@ public class BillSales {
 
     public void setSaleProperty(Sales saleProperty) {
         this.saleProperty = saleProperty;
-    }
-
-    public Integer getBillDetailId() {
-        return billDetailId;
-    }
-
-    public void setBillDetailId(Integer billDetailId) {
-        this.billDetailId = billDetailId;
     }
 
     public BillDetail getBillDetail() {

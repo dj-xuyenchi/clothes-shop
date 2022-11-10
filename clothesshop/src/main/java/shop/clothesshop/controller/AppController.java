@@ -2,21 +2,22 @@ package shop.clothesshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import shop.clothesshop.entities.AccountBag;
-import shop.clothesshop.entities.CategoryType;
+import shop.clothesshop.entities.Accounts;
+import shop.clothesshop.entities.BillDetail;
 import shop.clothesshop.entities.Product;
+import shop.clothesshop.entities.responobject.OrderObject;
 import shop.clothesshop.entities.responobject.ProductDetail;
 import shop.clothesshop.entities.responobject.ShowAccountBag;
-import shop.clothesshop.serivices.ProductServices;
+import shop.clothesshop.serivices.AppServices;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/product1.0")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
-public class ProductController {
+public class AppController {
     @Autowired
-    private ProductServices productServices;
+    private AppServices productServices;
 
     @RequestMapping(method = RequestMethod.GET, value = "getproducthome")
     public List<Product> getProductHome() {
@@ -34,5 +35,14 @@ public class ProductController {
         return productServices.getProductBagByAccountID(accountId);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "getbilldetailbyaccountid")
+    public List<OrderObject> getBillDetail(@RequestParam Integer accountId) {
+        return productServices.getOrderObjectByAccountId(accountId);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "checklogin")
+    public Accounts checkLogin(@RequestParam String userName,String userPass) {
+        return productServices.checkLogin(userName,userPass);
+    }
 }
 

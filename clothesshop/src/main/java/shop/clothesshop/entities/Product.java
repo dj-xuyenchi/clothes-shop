@@ -31,7 +31,7 @@ public class Product {
     private Integer colorId;
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name="colorid")
+    @JoinColumn(name = "colorid")
     private Color color;
     @ManyToOne
     @JoinColumn(name = "sizeid")
@@ -64,10 +64,32 @@ public class Product {
     private Integer price;
     @Column(name = "shellprice")
     private Integer shellPrice;
-    @Column(name="createdate")
-private LocalDate createDate;
-    @Column(name="updatedate")
-private LocalDate updateDate;
+    @Column(name = "createdate")
+    private LocalDate createDate;
+    @Column(name = "updatedate")
+    private LocalDate updateDate;
+    @Column(name = "productstatusid", insertable = false, updatable = false)
+    private Integer productStatusId;
+    @ManyToOne
+    @JoinColumn(name = "productstatusid")
+    @JsonBackReference
+    private ProductStatus productStatus;
+
+    public Integer getProductStatusId() {
+        return productStatusId;
+    }
+
+    public void setProductStatusId(Integer productStatusId) {
+        this.productStatusId = productStatusId;
+    }
+
+    public ProductStatus getProductStatus() {
+        return productStatus;
+    }
+
+    public void setProductStatus(ProductStatus productStatus) {
+        this.productStatus = productStatus;
+    }
 
     public LocalDate getCreateDate() {
         return createDate;

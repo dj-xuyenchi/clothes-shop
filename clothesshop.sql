@@ -1,4 +1,5 @@
 create database clothesshop;
+create database spring1
 insert into role values
 (1,'ADMIN','Quản Trị Viên'),
 (2,'EMPLOYEE','Nhân Viên'),
@@ -16,17 +17,34 @@ insert into shipmethod values
 (1,15000,'QUICKSHIP','Giao Hàng Nhanh'),
 (2,11000,'Normal','Giao Hàng Tiết Kiệm');
 
+
 insert into sales values
-(1,'SALE70%',0,'Giảm giá 70%',70),
-(2,'SALE10000',10000,'Giảm 10000',0);
+(1,'2022-11-1','2022-11-4','SALE70%',0,'Giảm giá 70%',70,1),
+(2,'2022-11-1','2022-11-4','SALE10000',10000,'Giảm 10000',0,1);
 
 insert into accounts values
-(1,'2000-01-01','2000-01-01','admin','1231234',1,'cauvongsociu',1),
-(2,'2000-01-01','2000-01-01','employee','1231234',1,'cauvongsociu1',2),
-(3,'2000-01-01','2000-01-01','guest','1231234',1,'cauvongsociu2',3);
+(1,'2000-01-01','2000-01-01','admin','1231234',1,'cauvongsociu','2021-9-9',1,null),
+(2,'2000-01-01','2000-01-01','employee','1231234',1,'cauvongsociu1','2021-9-9',2,null),
+(3,'2000-01-01','2000-01-01','guest','1231234',1,'cauvongsociu2','2021-9-9',3,null);
 
-insert into accountbag values
-()
+
+insert into accountshipcontact values 
+(1,'19 Thanh Niên - Tây Hồ - Hà Nội',3,'0968491797','DJ Bé Xinh'),
+(2,'1 Thống Nhất - Ba Đình - Hà Nội',3,'0968491877','DJ Gấu Mập');
+
+
+insert into billstatus values 
+(1,'WAITTING','Chờ Xác Nhận'),
+(2,'SHIPPING','Đang Giao'),
+(3,'SHIPPED','Đã Giao'),
+(4,'CANCEL','Đã Hủy');
+
+insert into bill values
+(1,1,1,1,'Đóng gói cẩn thận nha.',null,'2022-11-2',null,1,null),
+(2,1,2,1,'Đóng gói cẩn thận nha.',null,'2022-11-2',null,1,'2022-11-5'),
+(3,1,3,1,'Đóng gói cẩn thận nha.','2022-11-6','2022-11-2','2022-11-6',1,'2022-11-5'),
+(4,1,4,1,'Đóng gói cẩn thận nha.','2022-11-4','2022-11-2','2022-11-6',1,'2022-11-5');
+
 
 /// Dress select * from product
 insert into product values
