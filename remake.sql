@@ -58,7 +58,10 @@ select * from bill;
 insert into billdetail values 
 (1,2,2500000,1,2),
 (2,2,6270000,2,4),
-(3,2,1900000,3,6);
+(3,2,1900000,3,6),
+(4,1,1900000,4,1),
+(5,3,1900000,3,2),
+(6,4,1900000,3,1);
 
 insert into salesstatus values
 (1,'ON','Đang Áp Dụng'),
