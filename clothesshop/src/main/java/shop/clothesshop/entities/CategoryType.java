@@ -16,7 +16,7 @@ public class CategoryType {
     private String categoryTypeCode;
     @Column(name = "categerytypedetail")
     private String categoryTypeDetail;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoryType")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoryType")
     @JsonManagedReference
     private List<Product> products;
 

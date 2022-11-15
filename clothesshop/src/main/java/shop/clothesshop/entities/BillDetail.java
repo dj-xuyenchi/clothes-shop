@@ -40,14 +40,14 @@ public class BillDetail {
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "billDetail")
     @JsonManagedReference
-    private List<BillSales> billSaless;
+    private List<BillDetailSales> billDetailSalesses;
 
-    public List<BillSales> getBillSaless() {
-        return billSaless;
+    public List<BillDetailSales> getBillSaless() {
+        return billDetailSalesses;
     }
 
-    public void setBillSaless(List<BillSales> billSaless) {
-        this.billSaless = billSaless;
+    public void setBillSaless(List<BillDetailSales> billDetailSalesses) {
+        this.billDetailSalesses = billDetailSalesses;
     }
 
     public Integer getBillDetailId() {

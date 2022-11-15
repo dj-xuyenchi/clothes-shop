@@ -12,16 +12,11 @@ public class BuyMethod {
     @Column(name="buymethodid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer buyMethodId;
-
     @Column(name="buymethodcode")
     private String buyMethodCode;
-
     @Column(name="buymethodname")
     private String buyMethodName;
 
-    @OneToMany(mappedBy = "buyMethod",fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<Bill> bills;
 
     public Integer getBuyMethodId() {
         return buyMethodId;
@@ -47,11 +42,4 @@ public class BuyMethod {
         this.buyMethodName = buyMethodName;
     }
 
-    public List<Bill> getBills() {
-        return bills;
-    }
-
-    public void setBills(List<Bill> bills) {
-        this.bills = bills;
-    }
 }

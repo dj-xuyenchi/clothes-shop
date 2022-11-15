@@ -14,71 +14,30 @@ public class Sales {
     @Column(name = "salesid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer salesId;
-
     @Column(name = "salescode")
     private String salesCode;
-
     @Column(name = "salesname")
     private String salesName;
-
     @Column(name = "salespercent")
     private Integer salesPercent;
-
     @Column(name = "salesint")
     private Integer salesInt;
     @OneToMany(mappedBy = "saleProperty", fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<BillSales> billSalesList;
+    private List<BillDetailSales> billDetailSalesList;
     @Column(name = "opendate")
     private LocalDate openDate;
     @Column(name = "enddate")
     private LocalDate endDate;
     @Column(name = "salesstatusid", insertable = false, updatable = false)
-    private Integer salesSatusId;
+    private Integer salessStatusId;
     @ManyToOne
     @JoinColumn(name = "salesstatusid")
     @JsonBackReference
     private SalesStatus salesStatus;
-
-    public Integer getSalesSatusId() {
-        return salesSatusId;
-    }
-
-    public void setSalesSatusId(Integer salesSatusId) {
-        this.salesSatusId = salesSatusId;
-    }
-
-    public SalesStatus getSalesStatus() {
-        return salesStatus;
-    }
-
-    public void setSalesStatus(SalesStatus salesStatus) {
-        this.salesStatus = salesStatus;
-    }
-
-    public List<BillSales> getBillSalesList() {
-        return billSalesList;
-    }
-
-    public void setBillSalesList(List<BillSales> billSalesList) {
-        this.billSalesList = billSalesList;
-    }
-
-    public LocalDate getOpenDate() {
-        return openDate;
-    }
-
-    public void setOpenDate(LocalDate openDate) {
-        this.openDate = openDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sales")
+    @JsonManagedReference
+    private List<BillSales> billSalesList;
 
     public Integer getSalesId() {
         return salesId;
@@ -120,11 +79,51 @@ public class Sales {
         this.salesInt = salesInt;
     }
 
-    public List<BillSales> getPropertyDetailSalesList() {
+    public List<BillDetailSales> getBillDetailSalesList() {
+        return billDetailSalesList;
+    }
+
+    public void setBillDetailSalesList(List<BillDetailSales> billDetailSalesList) {
+        this.billDetailSalesList = billDetailSalesList;
+    }
+
+    public LocalDate getOpenDate() {
+        return openDate;
+    }
+
+    public void setOpenDate(LocalDate openDate) {
+        this.openDate = openDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public Integer getSalessStatusId() {
+        return salessStatusId;
+    }
+
+    public void setSalessStatusId(Integer salessStatusId) {
+        this.salessStatusId = salessStatusId;
+    }
+
+    public SalesStatus getSalesStatus() {
+        return salesStatus;
+    }
+
+    public void setSalesStatus(SalesStatus salesStatus) {
+        this.salesStatus = salesStatus;
+    }
+
+    public List<BillSales> getBillSalesList() {
         return billSalesList;
     }
 
-    public void setPropertyDetailSalesList(List<BillSales> billSalesList) {
+    public void setBillSalesList(List<BillSales> billSalesList) {
         this.billSalesList = billSalesList;
     }
 }

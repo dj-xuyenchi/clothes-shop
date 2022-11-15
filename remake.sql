@@ -64,8 +64,9 @@ insert into billdetail values
 (6,4,1900000,3,1);
 
 insert into salesstatus values
-(1,'ON','Đang Áp Dụng'),
-(2,'OFF','Ngừng Áp Dụng');
+(1,'FBD','Dành Cho BillDetail'),
+(2,'FB','Dành Cho Bill'),
+(3,'OFF','Ngừng áp dụng');
 
 insert into billsales values 
 (1,1,1),

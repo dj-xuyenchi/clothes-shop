@@ -1,5 +1,5 @@
 create database clothesshop;
-create database spring1
+
 insert into role values
 (1,'ADMIN','Quản Trị Viên'),
 (2,'EMPLOYEE','Nhân Viên'),

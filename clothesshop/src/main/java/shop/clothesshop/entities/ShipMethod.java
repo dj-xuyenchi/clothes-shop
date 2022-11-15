@@ -18,9 +18,6 @@ public class ShipMethod {
     private String shipMethodName;
     @Column(name = "price")
     private Integer price;
-    @OneToMany(mappedBy = "shipMethod", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<Bill> bills;
 
     public Integer getShipMethodId() {
         return shipMethodId;
@@ -46,11 +43,4 @@ public class ShipMethod {
         this.shipMethodName = shipMethodName;
     }
 
-    public List<Bill> getBills() {
-        return bills;
-    }
-
-    public void setBills(List<Bill> bills) {
-        this.bills = bills;
-    }
 }
