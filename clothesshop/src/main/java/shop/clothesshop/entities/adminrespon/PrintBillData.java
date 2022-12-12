@@ -1,9 +1,5 @@
 package shop.clothesshop.entities.adminrespon;
 
-import shop.clothesshop.entities.AccountShipContact;
-import shop.clothesshop.entities.Bill;
-import shop.clothesshop.entities.BillDetail;
-
 import java.time.LocalDate;
 import java.util.List;
 

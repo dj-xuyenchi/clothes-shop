@@ -14,10 +14,10 @@ public class Accounts {
     @Column(name = "accountid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
-    @Column(name="accountcode")
-    private String accountCode;
     @Column(name = "accountusername")
     private String accountUserName;
+    @Column(name = "accountcode")
+    private String accountCode;
     @Column(name = "accountpassword")
     private String accountPassword;
     @Column(name = "accountstatusid", insertable = false, updatable = false)

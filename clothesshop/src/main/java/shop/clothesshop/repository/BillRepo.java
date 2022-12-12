@@ -16,7 +16,7 @@ public interface BillRepo extends JpaRepository<Bill, Integer> {
     @Query(nativeQuery = true, value = "select count(*) from bill where billstatusid=3 and MONTH(createdate) = :month")
     public Integer countShippedBillByMonth(@Param("month") int month);
 
-    @Query(nativeQuery = true, value = "select sum(quantity) from billdetail join bill on bill.billid = billdetail.billid where bill.billstatusid = 3 and MONTH(createdate) = :month")
+    @Query(nativeQuery = true, value = "select sum(quantity) from billdetail join bill on bill.billid = billdetail.billid where bill.billstatusid =3 and MONTH(createdate) = :month")
     public Integer soldTotalByMonth(@Param("month") int month);
 
     @Query(nativeQuery = true, value = "select sum(price*quantity)")
@@ -37,7 +37,7 @@ public interface BillRepo extends JpaRepository<Bill, Integer> {
     @Query(nativeQuery = true, value = "select  * from bill where billstatusid =2")
     public List<Bill> getAllBillShipping();
 
-    @Query(nativeQuery = true, value = "select  * from bill where billstatusid =3 order by closedatetime desc")
+    @Query(nativeQuery = true, value = "select  * from bill where billstatusid =3")
     public List<Bill> getAllBillShipped();
 
     @Query(nativeQuery = true, value = "select  * from bill where billstatusid = 7 order by billid desc")

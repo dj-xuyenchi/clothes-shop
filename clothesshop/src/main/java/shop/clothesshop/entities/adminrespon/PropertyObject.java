@@ -10,7 +10,7 @@ public class PropertyObject {
     private List<Brand> brands;
     private List<Size> sizes;
     private List<CategoryType> categoryTypes;
-    private List<ProductStatus> productStatuses;
+private List<ProductStatus> productStatuses;
 
     public List<ProductStatus> getProductStatuses() {
         return productStatuses;

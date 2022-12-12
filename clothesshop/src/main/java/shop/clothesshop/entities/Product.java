@@ -15,10 +15,10 @@ public class Product {
     @Column(name = "productid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
-    @Column(name = "categorytypeid")
-    private Integer categoryTypeId;
     @Column(name="productcode")
     private String productCode;
+    @Column(name = "categorytypeid")
+    private Integer categoryTypeId;
     @ManyToOne
     @JoinColumn(name = "categorytypeid", insertable = false, updatable = false)
     @JsonBackReference

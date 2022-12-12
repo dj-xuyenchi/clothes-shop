@@ -1,6 +1,5 @@
 package shop.clothesshop.entities.adminrespon;
 
-import shop.clothesshop.entities.Bill;
 import shop.clothesshop.entities.BillDetail;
 import shop.clothesshop.entities.Product;
 

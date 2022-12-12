@@ -10,7 +10,7 @@ import shop.clothesshop.entities.requestobject.RePass;
 import shop.clothesshop.entities.requestobject.RemakeAccountRequest;
 import shop.clothesshop.entities.responobject.*;
 import shop.clothesshop.lib.GsonMix;
-import shop.clothesshop.serivices.AppServices;
+import shop.clothesshop.services.AppServices;
 
 import java.util.List;
 
@@ -30,7 +30,6 @@ public class AppController {
     public ProductDetail getProductById(@RequestParam Integer id) {
         return appServices.getProductId(id);
     }
-
 
     @RequestMapping(method = RequestMethod.GET, value = "getproductbagbyaccountid")
     public List<ShowAccountBag> getBag(@RequestParam Integer accountId) {

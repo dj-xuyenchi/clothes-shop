@@ -14,7 +14,7 @@ import shop.clothesshop.entities.adminrequest.CreateAndRemakePropertyData;
 import shop.clothesshop.entities.adminrequest.CreateProductData;
 import shop.clothesshop.entities.adminrequest.HoldBillRequestPayBill;
 import shop.clothesshop.entities.adminrespon.*;
-import shop.clothesshop.serivices.AdminServices;
+import shop.clothesshop.services.AdminServices;
 
 import java.io.IOException;
 import java.util.HashSet;
