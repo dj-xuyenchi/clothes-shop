@@ -13,25 +13,72 @@ public class AccountShipContact {
     @Column(name = "accountshipcontactid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountShipContactId;
-
-    @Column(name = "accountid", updatable = false, insertable = false)
+    @Column(name = "accountid")
     private Integer accountId;
-
     @Column(name = "receivername")
     private String receiverName;
     @Column(name = "accountdetailaddress")
     private String accountDetailAddress;
-
     @Column(name = "accountphonenumber")
     private String accountPhoneNumber;
-
-
+    @Column(name = "provinceid")
+    private String provinceID;
+    @Column(name = "districtid")
+    private String districtID;
+    @Column(name = "wardcode")
+    private String wardCode;
     @OneToMany(mappedBy = "accountShipContact", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Bill> bills;
+    @Column(name = "accountshipcontactstatusid")
+    private Integer accountShipContactStatusId;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name="accountshipcontactstatusid",insertable = false,updatable = false)
+    private AccountShipContactStatus accountShipContactStatus;
+
+    public Integer getAccountShipContactStatusId() {
+        return accountShipContactStatusId;
+    }
+
+    public void setAccountShipContactStatusId(Integer accountShipContactStatusId) {
+        this.accountShipContactStatusId = accountShipContactStatusId;
+    }
+
+    public AccountShipContactStatus getAccountShipContactStatus() {
+        return accountShipContactStatus;
+    }
+
+    public void setAccountShipContactStatus(AccountShipContactStatus accountShipContactStatus) {
+        this.accountShipContactStatus = accountShipContactStatus;
+    }
+
+    public String getProvinceID() {
+        return provinceID;
+    }
+
+    public void setProvinceID(String provinceID) {
+        this.provinceID = provinceID;
+    }
+
+    public String getDistrictID() {
+        return districtID;
+    }
+
+    public void setDistrictID(String districtID) {
+        this.districtID = districtID;
+    }
+
+    public String getWardCode() {
+        return wardCode;
+    }
+
+    public void setWardCode(String wardCode) {
+        this.wardCode = wardCode;
+    }
 
     @ManyToOne
-    @JoinColumn(name = "accountid")
+    @JoinColumn(name = "accountid", updatable = false, insertable = false)
     @JsonBackReference
     private Accounts account;
 

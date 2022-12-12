@@ -6,7 +6,6 @@ import java.util.List;
 
 public class CreateOrder {
     private List<Sales> salesOfBill;
-    private List<Sales> salesOfBillDetail;
     private List<BuyMethod> buyMethods;
     private List<ShipMethod> shipMethods;
     private List<OrderItem> orderItems;
@@ -26,14 +25,6 @@ public class CreateOrder {
 
     public void setSalesOfBill(List<Sales> salesOfBill) {
         this.salesOfBill = salesOfBill;
-    }
-
-    public List<Sales> getSalesOfBillDetail() {
-        return salesOfBillDetail;
-    }
-
-    public void setSalesOfBillDetail(List<Sales> salesOfBillDetail) {
-        this.salesOfBillDetail = salesOfBillDetail;
     }
 
     public List<BuyMethod> getBuyMethods() {

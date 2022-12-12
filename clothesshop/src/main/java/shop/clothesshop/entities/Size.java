@@ -16,9 +16,6 @@ public class Size {
     private String sizeCode;
     @Column(name = "sizedetail")
     private String sizeDetail;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "size")
-    @JsonManagedReference
-    private List<Product> products;
 
     public Integer getSizeId() {
         return sizeId;
@@ -44,11 +41,4 @@ public class Size {
         this.sizeDetail = sizeDetail;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

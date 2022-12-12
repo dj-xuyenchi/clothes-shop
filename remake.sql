@@ -37,8 +37,6 @@ insert into productstatus values
 (2,'OUTQUANTITY','Hết Hàng'),
 (3,'CLOSE','Ngừng Kinh Doanh');
 
-
-
 insert into product values
 (1,1,1,5,'2022-9-9',2310000,1,'Váy trắng dạ hội White Sheer Sleeves Raw Top Size S Luis Vuiiton','White Sheer Sleeves Raw Top',1,22,2500000,1,'2022-9-9'),
 (2,2,1,1,'2022-9-9',4400000,2,'Váy xanh dạ hội Blue Midi Raw Coat Dress Size L','Blue Midi Raw Coat Dress',1,33,6270000,2,'2022-9-9'),
@@ -47,34 +45,50 @@ insert into product values
 
 select * from productimg;
 
-insert into accountbag values
-(1,3,1,10),
-(2,3,3,2),
-(3,3,4,6),
-(4,3,2,1);
-
-select * from bill;
-
-insert into billdetail values 
-(1,2,2500000,1,2),
-(2,2,6270000,2,4),
-(3,2,1900000,3,6),
-(4,1,1900000,4,1),
-(5,3,1900000,3,2),
-(6,4,1900000,3,1);
 
 insert into salesstatus values
-(1,'FBD','Dành Cho BillDetail'),
-(2,'FB','Dành Cho Bill'),
+(1,'FBD','Đang áp dụng'),
 (3,'OFF','Ngừng áp dụng');
 
-insert into billsales values 
-(1,1,1),
-(2,1,2);
+insert into saletype values 
+(1,'SHIP-VOUCHER','Dành cho ship'),
+(2,'BILL-VOUCHER','Dành cho bill');
 
+insert into shipmethod values
+(1,0,'QUICKSHIP','Giao hàng nhanh'),
+(2,199000,'SUPPER','Hỏa tốc'),
+(3,0,'INSHOP','Mua tại quầy');
 
+insert into buymethod values
+(1,'CARD','Thanh Toán Bằng Thẻ'),
+(2,'HAND2MONEY','Thanh Toán Khi Nhận Hàng'),
+(3,'BANKING','Chuyển Khoản'),
+(4,'MONEY','Tiền Mặt'),
+(5,'BANKING-MONEY','Chuyển Khoản Và Tiền Mặt');
 
+insert into acccountstatus values
+(1,'OPEN','Truy Cập'),
+(2,'LOCK','Khóa');
 
-select * from color
-select * from product
-select * from size
+insert into clothesshop.role values
+(1,'ADMIN','Quản trị viên'),
+(2,'Employee','Nhân viên'),
+(3,'Guest','Khách hàng');
+
+insert into accountshipcontactstatus values
+(1,'ON','Sử dụng'),
+(2,'OFF','Ngừng sử dụng');
+
+insert into billstatus values 
+(1,'WAITTING','Chờ xác nhận'),
+(2,'SHIPPING','Đang giao'),
+(3,'SHIPPED','Đã giao'),
+(4,'CANCEL','Đã hủy'),
+(5,'CANCELSHIPPING','Đã hủy'),
+(6,'ADMINCANCEL','Admin hủy'),
+(7,'INSHOP','Chờ tại quầy');
+
+insert into accounts values 
+(1,'1998-12-24','2022-10-10','Admin','12341234',1,'adminsixdo','2022-10-10',1,'2022-10-10',null,'Admin SIXDO','09684917979'),
+(2,'1998-12-24','2022-10-10','Employee','12341234',1,'employeesixdo','2022-10-10',2,'2022-10-10',null,'Employee SIXDO','09684917978'),
+(3,'1998-12-24','2022-10-10','Customer','12341234',1,'cauvongsociu2','2022-10-10',3,'2022-10-10',null,'Customer SIXDO','09684917977');

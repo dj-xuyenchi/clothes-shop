@@ -15,26 +15,28 @@ public class Product {
     @Column(name = "productid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
-    @Column(name = "categorytypeid", insertable = false, updatable = false)
+    @Column(name = "categorytypeid")
     private Integer categoryTypeId;
+    @Column(name="productcode")
+    private String productCode;
     @ManyToOne
-    @JoinColumn(name = "categorytypeid")
+    @JoinColumn(name = "categorytypeid", insertable = false, updatable = false)
     @JsonBackReference
     private CategoryType categoryType;
     @Column(name = "productname")
     private String productName;
     @Column(name = "productdetail")
     private String productDetail;
-    @Column(name = "sizeid", insertable = false, updatable = false)
+    @Column(name = "sizeid")
     private Integer sizeId;
-    @Column(name = "colorid", insertable = false, updatable = false)
+    @Column(name = "colorid")
     private Integer colorId;
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "colorid")
+    @JoinColumn(name = "colorid", insertable = false, updatable = false)
     private Color color;
     @ManyToOne
-    @JoinColumn(name = "sizeid")
+    @JoinColumn(name = "sizeid", insertable = false, updatable = false)
     @JsonBackReference
     private Size size;
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
@@ -46,17 +48,17 @@ public class Product {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     @JsonManagedReference
     private List<BillDetail> billDetails;
-    @Column(name = "producerid", insertable = false, updatable = false)
+    @Column(name = "producerid")
     private Integer producerId;
-    @Column(name = "brandid", insertable = false, updatable = false)
+    @Column(name = "brandid")
     private Integer brandId;
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "brandid")
+    @JoinColumn(name = "brandid", insertable = false, updatable = false)
     private Brand brand;
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "producerid")
+    @JoinColumn(name = "producerid", insertable = false, updatable = false)
     private Producer producer;
     @Column(name = "quantity")
     private Integer quantity;
@@ -68,12 +70,20 @@ public class Product {
     private LocalDate createDate;
     @Column(name = "updatedate")
     private LocalDate updateDate;
-    @Column(name = "productstatusid", insertable = false, updatable = false)
+    @Column(name = "productstatusid")
     private Integer productStatusId;
     @ManyToOne
-    @JoinColumn(name = "productstatusid")
+    @JoinColumn(name = "productstatusid", insertable = false, updatable = false)
     @JsonBackReference
     private ProductStatus productStatus;
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
 
     public Integer getProductStatusId() {
         return productStatusId;

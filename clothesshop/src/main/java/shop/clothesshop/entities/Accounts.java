@@ -14,6 +14,8 @@ public class Accounts {
     @Column(name = "accountid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
+    @Column(name="accountcode")
+    private String accountCode;
     @Column(name = "accountusername")
     private String accountUserName;
     @Column(name = "accountpassword")
@@ -36,8 +38,28 @@ public class Accounts {
     private LocalDate createDate;
     @Column(name = "updatedate")
     private LocalDate updateDate;
+    @Column(name = "token")
     private String token;
+    @Column(name = "name")
     private String name;
+    @Column(name = "sdt")
+    private String sdt;
+
+    public String getAccountCode() {
+        return accountCode;
+    }
+
+    public void setAccountCode(String accountCode) {
+        this.accountCode = accountCode;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
 
     public String getName() {
         return name;

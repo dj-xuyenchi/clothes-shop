@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface AccountShipContactRepo extends JpaRepository<AccountShipContact, Integer> {
     @Query(value = "select * from accountshipcontact where accountid = :accountId and accountshipcontactstatusid = 1", nativeQuery = true)
-    public List<AccountShipContact> getAccountShipContactOn(Integer accountId);
+    public List<AccountShipContact> getAccountShipContactOn(@Param("accountId") int accountId);
 }

@@ -16,9 +16,6 @@ public class Producer {
     private String producerCode;
     @Column(name = "producerdetail")
     private String producerDetail;
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "producer")
-    @JsonManagedReference
-    private List<Product> products;
 
     public Integer getProducerId() {
         return producerId;
@@ -44,11 +41,4 @@ public class Producer {
         this.producerDetail = producerDetail;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

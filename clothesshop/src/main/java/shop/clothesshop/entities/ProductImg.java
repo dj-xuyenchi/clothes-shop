@@ -12,7 +12,7 @@ public class ProductImg {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productImgId;
 
-    @Column(name = "productid", updatable = false, insertable = false)
+    @Column(name = "productid")
     private Integer productId;
 
     @Column(name = "countimg")
@@ -22,7 +22,7 @@ public class ProductImg {
     private byte[] productImg;
 
     @ManyToOne
-    @JoinColumn(name = "productid")
+    @JoinColumn(name = "productid", updatable = false, insertable = false)
     @JsonBackReference
     private Product product;
 

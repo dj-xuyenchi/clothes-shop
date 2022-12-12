@@ -14,12 +14,12 @@ public class Bill {
     @Column(name = "billid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer billId;
-    @Column(name = "accountshipcontactid", updatable = false, insertable = false)
+    @Column(name = "billcode")
+    private String billCode;
+    @Column(name = "accountshipcontactid")
     private Integer accountShipContactId;
-    @Column(name = "buymethodid", updatable = false, insertable = false)
+    @Column(name = "buymethodid")
     private Integer buyMethodId;
-    @Column(name = "shipmethodid", updatable = false, insertable = false)
-    private Integer shipMethodId;
     @Column(name = "createdate")
     private LocalDate createDate;
     @Column(name = "shiptobuyerdate")
@@ -30,22 +30,20 @@ public class Bill {
     private LocalDate closeDateTime;
     @Column(name = "buyernotification")
     private String buyerNotification;
-    @Column(name = "billstatusid", updatable = false, insertable = false)
+    @Column(name = "billstatusid")
     private Integer billStatusId;
-    @JoinColumn(name = "billstatusid")
+    @Column(name = "totalbill")
+    private Double totalBill;
+    @JoinColumn(name = "billstatusid", updatable = false, insertable = false)
     @ManyToOne
     @JsonBackReference
     private BillStatus billStatus;
     @ManyToOne
-    @JoinColumn(name = "buymethodid")
+    @JoinColumn(name = "buymethodid", updatable = false, insertable = false)
     @JsonBackReference
     private BuyMethod buyMethod;
     @ManyToOne
-    @JoinColumn(name = "shipmethodid")
-    @JsonBackReference
-    private ShipMethod shipMethod;
-    @ManyToOne
-    @JoinColumn(name = "accountshipcontactid")
+    @JoinColumn(name = "accountshipcontactid", updatable = false, insertable = false)
     @JsonBackReference
     private AccountShipContact accountShipContact;
     @OneToMany(mappedBy = "bill", fetch = FetchType.LAZY)
@@ -54,6 +52,76 @@ public class Bill {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "bill")
     @JsonManagedReference
     private List<BillSales> billSalesList;
+    @Column(name = "shipmethodid")
+    private Integer shipMethodId;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "shipmethodid", insertable = false, updatable = false)
+    private ShipMethod shipMethod;
+    @Column(name = "shipprice")
+    private Double shipPrice;
+    @Column(name = "idemployee")
+    private Integer idEmployee;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "idemployee", insertable = false, updatable = false)
+    private Accounts employee;
+
+    public Integer getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(Integer idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+    public Accounts getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Accounts employee) {
+        this.employee = employee;
+    }
+
+    public String getBillCode() {
+        return billCode;
+    }
+
+    public void setBillCode(String billCode) {
+        this.billCode = billCode;
+    }
+
+    public Double getShipPrice() {
+        return shipPrice;
+    }
+
+    public void setShipPrice(Double shipPrice) {
+        this.shipPrice = shipPrice;
+    }
+
+    public Double getTotalBill() {
+        return totalBill;
+    }
+
+    public Integer getShipMethodId() {
+        return shipMethodId;
+    }
+
+    public void setShipMethodId(Integer shipMethodId) {
+        this.shipMethodId = shipMethodId;
+    }
+
+    public ShipMethod getShipMethod() {
+        return shipMethod;
+    }
+
+    public void setShipMethod(ShipMethod shipMethod) {
+        this.shipMethod = shipMethod;
+    }
+
+    public void setTotalBill(Double totalBill) {
+        this.totalBill = totalBill;
+    }
 
     public Integer getBillId() {
         return billId;
@@ -87,13 +155,6 @@ public class Bill {
         this.buyMethodId = buyMethodId;
     }
 
-    public Integer getShipMethodId() {
-        return shipMethodId;
-    }
-
-    public void setShipMethodId(Integer shipMethodId) {
-        this.shipMethodId = shipMethodId;
-    }
 
     public LocalDate getCreateDate() {
         return createDate;
@@ -159,13 +220,6 @@ public class Bill {
         this.buyMethod = buyMethod;
     }
 
-    public ShipMethod getShipMethod() {
-        return shipMethod;
-    }
-
-    public void setShipMethod(ShipMethod shipMethod) {
-        this.shipMethod = shipMethod;
-    }
 
     public AccountShipContact getAccountShipContact() {
         return accountShipContact;

@@ -11,16 +11,16 @@ public class BillSales {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "billsalesid")
     private Integer billSalesId;
-    @Column(name = "billid", updatable = false, insertable = false)
+    @Column(name = "billid")
     private Integer billId;
-    @Column(name = "salesid", updatable = false, insertable = false)
+    @Column(name = "salesid")
     private Integer salesId;
     @ManyToOne
-    @JoinColumn(name="billid")
+    @JoinColumn(name="billid", updatable = false, insertable = false)
     @JsonBackReference
     private Bill bill;
     @ManyToOne
-    @JoinColumn(name="salesid")
+    @JoinColumn(name="salesid", updatable = false, insertable = false)
     @JsonBackReference
     private Sales sales;
 

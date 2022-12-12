@@ -22,22 +22,41 @@ public class Sales {
     private Integer salesPercent;
     @Column(name = "salesint")
     private Integer salesInt;
-    @OneToMany(mappedBy = "saleProperty", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<BillDetailSales> billDetailSalesList;
     @Column(name = "opendate")
     private LocalDate openDate;
     @Column(name = "enddate")
     private LocalDate endDate;
-    @Column(name = "salesstatusid", insertable = false, updatable = false)
+    @Column(name = "salesstatusid")
     private Integer salessStatusId;
+    @Column(name="saletypeid")
+    private Integer saleTypeId;
+    @ManyToOne()
+    @JoinColumn(name="saletypeid", insertable = false, updatable = false)
+    @JsonBackReference
+    private SaleType saleType;
     @ManyToOne
-    @JoinColumn(name = "salesstatusid")
+    @JoinColumn(name = "salesstatusid", insertable = false, updatable = false)
     @JsonBackReference
     private SalesStatus salesStatus;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "sales")
     @JsonManagedReference
     private List<BillSales> billSalesList;
+
+    public Integer getSaleTypeId() {
+        return saleTypeId;
+    }
+
+    public void setSaleTypeId(Integer saleTypeId) {
+        this.saleTypeId = saleTypeId;
+    }
+
+    public SaleType getSaleType() {
+        return saleType;
+    }
+
+    public void setSaleType(SaleType saleType) {
+        this.saleType = saleType;
+    }
 
     public Integer getSalesId() {
         return salesId;
@@ -78,15 +97,6 @@ public class Sales {
     public void setSalesInt(Integer salesInt) {
         this.salesInt = salesInt;
     }
-
-    public List<BillDetailSales> getBillDetailSalesList() {
-        return billDetailSalesList;
-    }
-
-    public void setBillDetailSalesList(List<BillDetailSales> billDetailSalesList) {
-        this.billDetailSalesList = billDetailSalesList;
-    }
-
     public LocalDate getOpenDate() {
         return openDate;
     }

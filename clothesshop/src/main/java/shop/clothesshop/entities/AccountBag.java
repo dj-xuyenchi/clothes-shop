@@ -5,21 +5,21 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
-@Table(name="accountbag")
+@Table(name = "accountbag")
 @Entity
 public class AccountBag {
     @Id
-    @Column(name="accountbagid")
+    @Column(name = "accountbagid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountBagId;
 
-    @Column(name="accountid",insertable = false,updatable = false)
+    @Column(name = "accountid", insertable = false, updatable = false)
     private Integer accountId;
 
-    @Column(name="productid",insertable = false,updatable = false)
+    @Column(name = "productid", insertable = false, updatable = false)
     private Integer productId;
 
-    @Column(name="quantity")
+    @Column(name = "quantity")
     private Integer quantity;
 
     @ManyToOne
@@ -28,9 +28,9 @@ public class AccountBag {
     private Accounts account;
 
     @ManyToOne
-    @JoinColumn(name="productid")
+    @JoinColumn(name = "productid")
     @JsonBackReference
-private Product product;
+    private Product product;
 
     public Integer getAccountBagId() {
         return accountBagId;

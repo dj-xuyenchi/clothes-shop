@@ -12,6 +12,24 @@ public class OrderObject {
     private BillStatus billStatus;
     private List<ProductBillDetail> productBillDetails;
     private AccountShipContact accountShipContact;
+    private Integer freeShip;
+    private Integer voucherSIXDO;
+
+    public Integer getVoucherSIXDO() {
+        return voucherSIXDO;
+    }
+
+    public void setVoucherSIXDO(Integer voucherSIXDO) {
+        this.voucherSIXDO = voucherSIXDO;
+    }
+
+    public Integer getFreeShip() {
+        return freeShip;
+    }
+
+    public void setFreeShip(Integer freeShip) {
+        this.freeShip = freeShip;
+    }
 
     public AccountShipContact getAccountShipContact() {
         return accountShipContact;

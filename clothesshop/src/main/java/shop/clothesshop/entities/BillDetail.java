@@ -14,10 +14,10 @@ public class BillDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer billDetailId;
 
-    @Column(name = "billid", updatable = false, insertable = false)
+    @Column(name = "billid")
     private Integer billId;
 
-    @Column(name = "productid", updatable = false, insertable = false)
+    @Column(name = "productid")
     private Integer productId;
 
 
@@ -28,27 +28,17 @@ public class BillDetail {
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "billid")
+    @JoinColumn(name = "billid", updatable = false, insertable = false)
     @JsonBackReference
     private Bill bill;
 
     @ManyToOne
-    @JoinColumn(name = "productid")
+    @JoinColumn(name = "productid", updatable = false, insertable = false)
     @JsonBackReference
     private Product product;
 
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "billDetail")
-    @JsonManagedReference
-    private List<BillDetailSales> billDetailSalesses;
 
-    public List<BillDetailSales> getBillSaless() {
-        return billDetailSalesses;
-    }
-
-    public void setBillSaless(List<BillDetailSales> billDetailSalesses) {
-        this.billDetailSalesses = billDetailSalesses;
-    }
 
     public Integer getBillDetailId() {
         return billDetailId;

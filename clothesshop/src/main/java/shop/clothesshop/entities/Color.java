@@ -16,9 +16,6 @@ public class Color {
     private String colorCode;
     @Column(name = "colordetail")
     private String colorDetail;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "color")
-    @JsonManagedReference
-    private List<Product> products;
 
     public Integer getColorId() {
         return colorId;
@@ -44,11 +41,4 @@ public class Color {
         this.colorDetail = colorDetail;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

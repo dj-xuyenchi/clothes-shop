@@ -30,10 +30,13 @@ insert into accounts values
 (2,'2000-01-01','2000-01-01','employee','1231234',1,'cauvongsociu1','2021-9-9',2,null),
 (3,'2000-01-01','2000-01-01','guest','1231234',1,'cauvongsociu2','2021-9-9',3,null);
 
+insert into accountshipcontactstatus VALUES
+(1,'ON','Sử Dụng'),
+(2,'OFF','Ngừng Sử Dụng');
 
 insert into accountshipcontact values 
-(1,'19 Thanh Niên - Tây Hồ - Hà Nội',3,'0968491797','DJ Bé Xinh'),
-(2,'1 Thống Nhất - Ba Đình - Hà Nội',3,'0968491877','DJ Gấu Mập');
+(1,'19 Thanh Niên - Tây Hồ - Hà Nội',3,'0968491797','DJ Bé Xinh',1),
+(2,'1 Thống Nhất - Ba Đình - Hà Nội',3,'0968491877','DJ Gấu Mập',1);
 
 
 insert into billstatus values 

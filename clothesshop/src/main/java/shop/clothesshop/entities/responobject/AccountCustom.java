@@ -11,6 +11,24 @@ public class AccountCustom {
     private String address;
     private LocalDate born;
     private List<AccountShipContact> shipContacts;
+    private Integer roleID;
+    private String sdt;
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public Integer getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(Integer roleID) {
+        this.roleID = roleID;
+    }
 
     public LocalDate getBorn() {
         return born;
